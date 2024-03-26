@@ -1,0 +1,81 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the navigation bar */
+nav {
+    background-color: #ffffff; /* Facebook's primary color */
+    padding: 10px;
+    width: 20vw; /* Adjust width as needed */
+    height: 100vh;
+    position: fixed; /* Initially fixed for responsiveness */
+    top: 0;
+    left: 0; /* Maintain left position for responsiveness */
+    transition: margin-left 0.3s ease-in-out; /* Smooth transition */
+  }
+  nav.hidden-nav {
+    margin-left: -100vw;
+}
+ 
+
+nav ul li {
+    list-style: none;
+    margin-left: 30px;
+}
+
+#title-nav {
+    font-size: 32px;
+    font-style: italic;
+}
+
+#icon {
+    margin-top: 28px;
+    font-size: 22px;
+}
+
+#icon:hover {
+    color: goldenrod;
+}
+
+#icon a i {
+    margin-right: 20px;
+}
+
+#pic {
+    display: flex;
+    margin-top: 30px;
+    font-size: 22px;
+}
+
+#pic a:hover {
+    color: goldenrod;
+}
+
+#pic img {
+    margin-right: 20px;
+}
+
+@media only screen and (max-width: 420px) {
+    nav {
+        width: 100vw; 
+        /* height: 80vh; */
+        background-color: rgb(255, 236, 236);
+        z-index: 999;
+        display: none;
+        position: fixed;
+    }
+}
+
+#remove-nav {
+    margin-left: 170px;
+    font-size: 20px;
+    cursor: pointer; 
+}

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Profile</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/stylesheets/navbar.css">
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+  #story-logo {
+    margin-left: 70px;
+  }
+
+  #box {
+    width: 70vw;
+    margin-left: 20vw !important;
+    background-color: white !important;
+    color: black !important;
+    /* font-size: 22px; */
+    position: relative;
+    /* z-index: 999; */
+  }
+
+  #posts-container {
+    font-size: 22px !important;
+  }
+
+  #posts-container #formim {
+    width: 280px !important;
+    height: 500px !important;
+    margin-left: 20vw;
+  }
+
+  #posts-container img {
+    border-radius: 11px;
+  }
+
+  #tite-post {
+    margin-left: 9vw;
+  }
+
+  @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+
+
+
+  @media only screen and (max-width: 420px) {
+
+    body {
+      width: 90vw !important;
+      overflow-x: hidden;
+    }
+
+    #logo-boxes {
+      width: 11vw;
+      height: 5vh;
+    }
+
+    #story-nav {
+      width: 20vw !important;
+      height: 10vh !important;
+    }
+
+    #formim {
+      margin-bottom: -40px;
+    }
+
+    #story-logo {
+      margin-left: 0px;
+    }
+
+    #box {
+      width: 100vw;
+      margin-left: 0vw !important;
+      background-color: white !important;
+      color: black !important;
+      /* font-size: 22px; */
+      /* border: 2px solid red; */
+      position: relative;
+    }
+
+    #posts-container {
+      font-size: 32px !important;
+      margin-left: -30px;
+    }
+
+    #posts-container #formim {
+      width: 320px !important;
+      height: 500px !important;
+      margin-left: 15vw;
+    }
+
+    #tite-post {
+      margin-left: 9vw;
+    }
+  }
+
+  /* Search Bar Styles */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    /* width: 60vw !important; */
+  }
+
+  .search-bar input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    width: 70vw !important;
+  }
+
+  .search-bar button {
+    background-color: #007bff;
+    /* Change to your preferred button color */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 4px;
+    /* Adjust as needed */
+  }
+
+  .search-bar button:hover {
+    background-color: #0056b3;
+    /* Change to your preferred hover color */
+  }
+
+  @media only screen and (max-width: 420px) {
+
+    /* Search Bar Styles */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      /* width: 60vw !important; */
+      /* margin-right: 20px; */
+    }
+
+    .search-bar input[type="text"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      width: 70vw !important;
+      /* margin-left: -20px; */
+    }
+
+    .search-bar button {
+      background-color: #007bff;
+      /* Change to your preferred button color */
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 4px;
+      /* Adjust as needed */
+    }
+
+    #bars-nav {
+      /* margin-left: -30px; */
+      /* margin-top: -110px; */
+      /* margin-bottom: 50px; */
+      margin-right: 15px;
+      margin-left: 10px;
+    }
+
+    #search-form {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: -20px;
+      gap: 5px;
+    }
+
+  }
+
+  #icon {
+    align-items: center;
+    text-align: center;
+    /* justify-content: center; */
+    display: flex;
+    margin-top: 19px;
+  }
+
+nav ul li a  {
+    align-items: center;
+    text-align: center;
+    /* justify-content: center; */
+    display: flex;
+    /* margin-left: 20px; */
+  }
+nav ul li a  lord-icon{
+  margin-right: 20px;
+  }
+
+  #remove-nav{
+    font-size: 33px;
+  }
+
+
+  #title-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>
+
+<body>
+  <div id="conatiner">
+    <nav>
+      <ul>
+        <li id="title-nav"><a href="#"> SocialSync</a><i style="margin-top: -20px;" id="remove-nav" style="font-size:24px" class="fa">&#xf00d;</i>
+        </li>
+        <li id="icon"><a id="bars-box" href="feed"><lord-icon src="https://cdn.lordicon.com/heexevev.json" trigger="hover"
+              style="width:40px;height:40px">
+            </lord-icon>Home</a></li>
+        <li id="icon"><a href="search"><lord-icon src="https://cdn.lordicon.com/ybaojceo.json" trigger="hover"
+              style="width:40px;height:40px">
+            </lord-icon> Search</a></li>
+        <li id="icon"><a href="https://www.instagram.com/explore/"><lord-icon
+              src="https://cdn.lordicon.com/kfmfikzu.json" trigger="hover" style="width:40px;height:40px">
+            </lord-icon>
+            Explore</a></li>
+        <li id="icon"><a href="https://www.instagram.com/reels/C4OBvWXxLHp/"><lord-icon
+              src="https://cdn.lordicon.com/larohmte.json" trigger="hover" style="width:40px;height:40px">
+            </lord-icon> Reels</a></li>
+        <li id="icon"><a href="https://www.instagram.com/direct/inbox/"><lord-icon
+              src="https://cdn.lordicon.com/egmlnyku.json" trigger="hover" style="width:50px;height:50px">
+            </lord-icon>Massages</a></li>
+        <li id="icon"><a href="edit"><lord-icon src="https://cdn.lordicon.com/ylvuooxd.json" trigger="hover"
+              style="width:40px;height:40px">
+            </lord-icon>Edit</a></li>
+        <li id="icon"><a href="upload"><lord-icon src="https://cdn.lordicon.com/akqsdstj.json" trigger="hover"
+              style="width:40px;height:40px">
+            </lord-icon>Create</a></li>
+        <li id="icon"><a  href="/logout"><lord-icon src="https://cdn.lordicon.com/pdwpcpva.json" trigger="hover"
+              style="width:40px;height:40px">
+            </lord-icon>Logout</a></li>
+        <li id="pic">
+          <img style="width: 40px; height: 40px; border-radius: 50%;" class="user-avatar"
+            src="/images/uploads/<%= user.picture %>" alt="<%= user.username %>">
+          <a href="profile">Profile</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- <a href="#"><i style="font-size:24px" class="fa">&#xf0c9;</i></a> -->
+    <div id="box" class="width[80vw] min-h-screen bg-zinc-900 text-white py-5">
+      <div class="w-full px-4 flex items-center justify-between">
+        <img class="w-1/4" src="/images/logo.png" alt="">
+        <div class="icons -mt-2 flex gap-5 items-center">
+          <div id="searchbox">
+            <form id="search-form" action="/search" method="get">
+              <div class="search-bar">
+                <input type="text" name="username" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </div>
+              <i id="bars-nav" style="font-size:24px" class="fa">&#xf0c9;</i>
+            </form>
+
+          </div>
+        </div>
+      </div>
+      <div id="story-logo" class="story px-3 flex gap-3 overflow-auto mt-5">
+        <a href="/story">
+          <div class="circle flex-shrink-0">
+            <div id="story-nav"
+              class="gradient w-[6vw] h-[6vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+              <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+                <img class="w-full h-full object-cover" src="/images/uploads/<%= user.picture %>" alt="">
+
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <% stories.forEach(function(story){ %>
+          <a href="/story/<%= story.id %>">
+            <div class="circle flex-shrink-0">
+              <div id="story-nav"
+                class="gradient w-[6vw] h-[6vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+                <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+                  <img class="w-full h-full object-cover" src="/images/uploads/<%= story.user.picture %>" alt="">
+                </div>
+              </div>
+            </div>
+          </a>
+          <% }) %>
+      </div>
+      <hr style="margin-bottom: 10px; margin-top: 20px;">
+      <div id="posts-container" class="posts parent mb-20">
+        <% posts.reverse().forEach(function(post){ %>
+          <div id="post-upload" class="post mt-10 width[10vw] min-h-[10vh]">
+            <div id="tite-post" class="title px-9 flex items-center gap-2">
+              <div id="logo-boxes" class="w-[5vw] h-[5vw] bg-sky-100 rounded-full overflow-hidden">
+                <img id="logo-box" class="w-full h-full object-cover" src="/images/uploads/<%= post.user.picture %>"
+                  alt="">
+              </div>
+              <h4 class="text-sm">
+                <%= post.user.username %>
+              </h4>
+              <h6 class="text-xs opacity-30">
+                <%= dater(new Date(post.date)) %>
+              </h6>
+            </div>
+            <div id="formim">
+              <div class="relative w-full h-96 mt-4 bg-sky-100 overflow-hidden">
+                <img id="postimgbox" data-postid="<%= post.id %>" class="postimg w-full h-full object-cover"
+                  src="/images/uploads/<%= post.picture %>" alt="">
+              </div>
+              <div class="options w-full px-4 flex justify-between items-center text-[1.4rem]">
+                <div class="flex gap-3 mt-2">
+                  <% if(post.like.indexOf(user._id)===-1){ %>
+                    <i class="heart ri-heart-3-line"></i>
+                    <% } else { %>
+                      <i class="heart ri-heart-3-fill text-red-500"></i>
+                      <% } %>
+                        <i class="ri-chat-3-line"></i>
+                        <i class="ri-share-circle-line"></i>
+                </div>
+                <% if(user.saved.indexOf(post.id)===-1){ %>
+                  <i data-postid="<%= post.id %>" class="save ri-bookmark-line"></i>
+                  <% } else { %>
+                    <i data-postid="<%= post.id %>" class="save ri-bookmark-fill text-zinc-100"></i>
+                    <% } %>
+              </div>
+              <h3 class="likeval px-4 mt-2 text-sm leading-none tracking-tight">
+                <%= post.like.length %> likes
+              </h3>
+              <h2 class="text-white font-light text-sm mt-2">
+                <span class="font-semibold pl-4 pr-2">
+                  <%= post.user.username %>
+                </span>
+                <%= post.caption %>
+              </h2>
+            </div>
+            <% }) %>
+          </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      function formatRelativeTime(date) {
+        const now = new Date();
+        const diff = now - date;
+
+        // Convert milliseconds to seconds
+        const seconds = Math.floor(diff / 1000);
+
+        if (seconds < 60) {
+          return `${seconds}s`;
+        }
+
+        const minutes = Math.floor(seconds / 60);
+
+        if (minutes < 60) {
+          return `${minutes}m`;
+        }
+
+        const hours = Math.floor(minutes / 60);
+
+        if (hours < 24) {
+          return `${hours}h`;
+        }
+
+        const days = Math.floor(hours / 24);
+
+        if (days < 7) {
+          return `${days}d`;
+        }
+
+        const weeks = Math.floor(days / 7);
+
+        return `${weeks}w`;
+      }
+
+      document.querySelector(".parent")
+        .addEventListener("click", function (dets) {
+          if (dets.target.classList.contains("postimg")) {
+            var post = dets.target.parentNode.parentNode;
+            var heartwithborder = post.querySelector(".heart");
+            if (heartwithborder.classList.contains("ri-heart-3-line")) {
+              heartwithborder.classList.remove("ri-heart-3-line")
+              heartwithborder.classList.add("ri-heart-3-fill")
+              heartwithborder.classList.add("text-red-500")
+              // heartwithborder.style.color = "red";
+            }
+            else {
+              heartwithborder.classList.remove("ri-heart-3-fill")
+              heartwithborder.classList.remove("text-red-500")
+              heartwithborder.classList.add("ri-heart-3-line")
+            }
+            fetch(`/like/${dets.target.dataset.postid}`)
+              .then(raw => raw.json())
+              .then(response => {
+                console.log(response.like.length);
+                post.querySelector(".likeval").textContent = response.like.length + " likes"
+              })
+
+            var icon = document.createElement("i");
+            icon.classList.add("ri-heart-3-fill");
+            icon.classList.add("text-red-700", "text-6xl", 'absolute', 'top-1/2', 'left-1/2', '-translate-x-[50%]', '-translate-y-[50%]', 'z-[9]');
+            dets.target.parentNode.appendChild(icon);
+
+            gsap.from(icon, {
+              scale: .5,
+              y: 30,
+              opacity: 0,
+              ease: Expo,
+              duration: .3
+            })
+
+            gsap.to(icon, {
+              scale: 0,
+              y: -30,
+              opacity: 0,
+              duration: .3,
+              ease: Expo,
+              delay: .3,
+              onComplete: () => {
+                dets.target.parentNode.removeChild(icon);
+              }
+            })
+          }
+          else if (dets.target.classList.contains("save")) {
+            var id = dets.target.dataset.postid;
+            fetch(`/save/${id}`)
+              .then(raw => raw.json())
+              .then(result => {
+                if (!dets.target.classList.contains("ri-bookmark-line")) {
+                  dets.target.classList.remove("ri-bookmark-fill", "text-zinc-100");
+                  dets.target.classList.add("ri-bookmark-line")
+                }
+                else {
+                  dets.target.classList.remove("ri-bookmark-line")
+                  dets.target.classList.add("ri-bookmark-fill", "text-zinc-100")
+                }
+              })
+          }
+        })
+
+
+
+    </script>
+  </div>
+
+  <script src="/javascripts/navbar.js"></script>
+
+</body>
+
+</html>

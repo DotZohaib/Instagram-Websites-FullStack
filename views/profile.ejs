@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Profile</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous">
+  <link rel="stylesheet" href="path/to/fontawesome/css/all.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/stylesheets/profile.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<!-- <style>
+  #profile-navigation{
+    background-color: rgb(180, 176, 176);
+    height: 70px;
+    width: 60vw !important;
+    display: flex;
+    margin-top: 77vh;
+    overflow: hidden;
+    position: fixed;
+    margin-left: -20px;
+    font-size: 28px;
+    justify-content: space-around;
+    
+  }
+
+</style> -->
+
+
+
+<body>
+  <div id="container">
+    <nav>
+      <ul>
+        <li id="title-nav"><a href="#"> SocialSync</a><i id="remove-nav" style="font-size:24px" class="fa">&#xf00d;</i>
+        </li>
+        <li id="icon"><a href="feed"><i style="font-size:24px" class="fa">&#xf015;</i>Home</a></li>
+        <li id="icon"><a href="search"><i style="font-size:24px" class="fa">&#xf002;</i> Search</a></li>
+        <li id="icon"><a href="https://www.instagram.com/explore/"><i style="font-size:24px" class="fa">&#xf26b;</i> Explore</a></li>
+        <li id="icon"><a href="https://www.instagram.com/reels/C4OBvWXxLHp/"><i style="font-size:24px" class="fa">&#xf008;</i> Reels</a></li>
+        <li id="icon"><a href="https://www.instagram.com/direct/inbox/"><i class="text-[1.9rem] ri-messenger-line"></i>Massages</a></li>
+        <li id="icon"><a href="edit"><i style="font-size:24px" class="fa fa-comment"></i>Edit</a></li>
+        <li id="icon"><a href="upload"><i style="font-size:24px" class="fa">&#xf055;</i>Create</a></li>
+        <li id="icon"><a href="/logout"><i style="font-size:24px" class="fa">&#xf08b;</i>Logout</a></li>
+        <li id="pic">
+          <img style="width: 40px; height: 40px; border-radius: 50%;" class="user-avatar"
+            src="/images/uploads/<%= user.picture %>" alt="<%= user.username %>">
+          <a href="profile">Profile</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="profile" class="profile-container">
+      <header class="profile-header">
+        <i id="bars-nav" style="font-size:24px" class="fa">&#xf0c9;</i>
+        <h3 class="username">
+          <%= user.username %>
+        </h3>
+        <div class="profile-icons">
+          <a href="/upload" class="upload-icon"><i class="ri-add-box-line"></i></a>
+          <i class="placeholder-icon"></i>
+        </div>
+        <img class="user-avatar" src="/images/uploads/<%= user.picture %>" alt="<%= user.username %>">
+      </header>
+      <hr>
+
+      <main class="profile-main">
+        <div id="fun">
+          <section class="profile-image">
+            <img class="user-avatar" src="/images/uploads/<%= user.picture %>" alt="<%= user.username %>">
+          </section>
+
+          <section class="profile-stats">
+            <div class="stat">
+              <h3>
+                <%= user.posts.length %>
+              </h3>
+              <h4>Posts</h4>
+            </div>
+            <div class="stat">
+              <h3>
+                <%= user.followers.length %>
+              </h3>
+              <h4>Followers</h4>
+            </div>
+            <div class="stat">
+              <h3>
+                <%= user.following.length %>
+              </h3>
+              <h4>Following</h4>
+            </div>
+          </section>
+        </div>
+        <section class="profile-info">
+          <h3 class="user-name">
+            <%= user.name %>
+          </h3>
+          <p class="user-bio">
+            <%= user.bio ?? "You haven't set a bio yet. Click edit profile to set one." %>
+          </p>
+          <button id="btnbtn" type="submit"><a href="/edit" class="edit-profile-btn">Edit Profile</a></button>
+        </section>
+
+        <section class="user-posts">
+          <% if (user.posts.length> 0) { %>
+            <% user.posts.reverse().forEach(function(post) { %>
+              <div class="post-item">
+                <img class="post-image" src="/images/uploads/<%= post.picture %>" alt="Post by <%= user.username %>">
+              </div>
+              <% }) %>
+                <% } else { %>
+                  <div class="no-posts">
+                    <small class="opacity-50">No posts yet.</small>
+                  </div>
+                  <% } %>
+        </section>
+
+      </main>
+
+
+    </div>
+  </div>
+
+
+  <script>
+    function toggleNavigation() {
+      const barsNavIcon = document.getElementById('bars-nav');
+      const removeNavIcon = document.getElementById('remove-nav');
+      const nav = document.querySelector('nav');
+
+      // Handle initial display based on screen size
+      if (window.innerWidth < 500) {
+        barsNavIcon.style.display = 'inline-block';
+        removeNavIcon.style.display = 'inline-block';
+      } else {
+        barsNavIcon.style.display = 'none';
+        removeNavIcon.style.display = 'none';
+        nav.style.display = 'block'; // Ensure navigation is initially visible on larger screens
+      }
+
+      // Toggle navigation visibility on click
+      barsNavIcon.addEventListener('click', function () {
+        nav.style.display = (nav.style.display === 'none' || nav.style.display === '') ? 'block' : 'none';
+      });
+
+      removeNavIcon.addEventListener('click', function () {
+        nav.style.display = 'none';
+      });
+    }
+
+    // Call the function on page load and window resize
+    window.addEventListener('load', toggleNavigation);
+    window.addEventListener('resize', toggleNavigation);
+
+  </script>
+</body>
+
+</html>

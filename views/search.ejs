@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Profile</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/stylesheets/profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+    /* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212; /* Dark background color */
+
+}
+
+/* Search Box Animation */
+#search-box {
+  height: 70vh;
+  animation: fadeInUp 0.5s ease-in-out forwards;
+  width: 100vw;
+  /* margin-left: 20vw; */
+  border-radius: 50px;
+}
+
+@media only screen and(max-width: 420px) {
+  #search-box {
+  height: 70vh;
+  animation: fadeInUp 0.5s ease-in-out forwards;
+  width: 100vw !important;
+  border-radius: 50px;
+  /* margin-left: -20px !important; */
+}
+
+.input {
+  width: 100vw !important;
+}
+
+
+#search-box input{
+  width: 100vw !important;
+}
+  
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stylish Search Bar Styles */
+#search-box .border-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #1e1e1e; /* Dark gray background color */
+  transition: background-color 0.2s ease-in-out; /* Add background color transition */
+}
+
+
+.text-white {
+  color: #fff; /* White text color */
+}
+
+.ri-search-line {
+  font-size: 1.5rem;
+  transition: transform 0.2s ease-in-out; /* Add icon hover animation */
+}
+
+#search-box:hover .ri-search-line {
+  transform: scale(1.1); /* Slightly scale up icon on hover */
+}
+
+.input {
+  flex: 1;
+  margin-left: 8px;
+  background-color: #1e1e1e; /* Dark gray background color */
+  color: #ccc; /* Light gray text color */
+  border: none;
+  outline: none;
+  /* border-radius: 50px !important; */
+}
+
+
+#search-box input{
+    border-radius: 33px;
+}
+/* Search Results Styles */
+.users {
+  margin-top: 20px;
+}
+
+/* User Card Movement & Interaction */
+.users a:hover .user-card {
+  transform: scale(1.05); /* Subtle scale up on hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle hover shadow */
+}
+
+.user-card {
+  /* Add your user card styles here */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Animation and shadow transitions */
+}
+
+/* Navigation Styles */
+.profile-navigation {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1e1e1e; /* Dark gray background color */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #ccc; /* Light gray text color */
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item.active {
+  color: #fff; /* White text color for active item */
+}
+
+/* Profile Image in Navigation */
+.nav-profile-image {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+</style>
+<body>
+    <div id="search-box" class="w-full min-h-screen bg-zinc-900 px-4 py-5">
+        <div class="border-2  flex items-center justify-between px-2 py-1 rounded-md">
+            <i class="text-white ri-search-line"></i>
+            <input class="input ml-1 w-full " type="text" name="username"
+                placeholder="search username">
+        </div>
+        <div class="users"></div>
+    </div>
+
+    <script>
+        var inp = document.querySelector(".input");
+
+        inp.addEventListener("input", function (e) {
+            if (inp.value !== '') {
+                fetch(`/search/${inp.value}`)
+                    .then(raw => raw.json())
+                    .then(result => {
+                        let clutter = "";
+
+                        result.forEach((item) => {
+                            clutter += `
+                            <a href="/profile/${item.username}" class="outline-none">
+                                <div class="text-white flex items-center gap-2 mt-5">
+                                    <div class="image w-[6vw] h-[6vw] rounded-full bg-sky-100 overflow-hidden">
+                                        <img src="/images/uploads/${item.picture}" alt="">
+                                    </div>
+                                    <div class="text">
+                                        <h3>${item.username}</h3>
+                                        <h4 class="text-xs opacity-30 leading-none">${item.name}</h4>
+                                    </div>
+                                </div>
+                            </a>`;
+                        });
+
+                        document.querySelector(".users").innerHTML = clutter;
+                    });
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
+        integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+       
+        </div>
+      </body>
+      
+      </html>
